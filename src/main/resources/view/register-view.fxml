@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.pbcorporations.gestion.recursos.humanos.controller.RegisterController">
+    <stylesheets>
+        <URL value="@/main/resources/css/styles.css" />
+    </stylesheets>
+   <children>
+      <BorderPane layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="separator" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="20.0" left="100.0" right="100.0" top="20.0" />
+               </padding>
+               <children>
+                  <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" styleClass="login-container">
+                     <children>
+                        <Label styleClass="title-label" text="Registrese" />
+                        <Label text="Usuario" />
+                        <TextField fx:id="txtUsername" promptText="Ingrese su usuario" styleClass="text-field" />
+                        <Label text="Contraseña" />
+                        <TextField fx:id="txtPassword" promptText="Ingrese su contraseña" />
+                        <Label text="Rol" />
+                        <ComboBox fx:id="cmbxRoles" prefWidth="150.0" styleClass="combo-box" />
+                        <Label text="Empleado" />
+                        <ComboBox fx:id="cmbxEmpleados" prefWidth="150.0" />
+                        <Region prefHeight="9.0" prefWidth="200.0" />
+                        <Button mnemonicParsing="false" onAction="#handleRegister" styleClass="login-button" text="Registrarse" />
+                        <Button mnemonicParsing="false" onAction="#handleReturn" styleClass="login-button" text="Regresar" />
+                     </children>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </VBox>
+               </children>
+            </VBox>
+         </center>
+         <stylesheets>
+            <URL value="@../css/styles.css" />
+            <URL value="@../css/login.css" />
+         </stylesheets>
+      </BorderPane>
+   </children>
+</AnchorPane>
