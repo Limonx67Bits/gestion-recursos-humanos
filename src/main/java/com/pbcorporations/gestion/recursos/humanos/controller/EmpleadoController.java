@@ -1,4 +1,4 @@
-package main.java.com.pbcorporations.gestion.recursos.humanos.controler;
+package main.java.com.pbcorporations.gestion.recursos.humanos.controller;
 
 import java.net.URL;
 import java.sql.SQLException;

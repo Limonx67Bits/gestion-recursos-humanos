@@ -73,4 +73,29 @@ public class EmpleadoRepository {
             return ps.executeUpdate() > 0;
         }
     }
+    
+    public List<EmpleadoModel> noUser() {
+        List<EmpleadoModel> lista = new ArrayList<>();
+        String sql = "select e.* from empleados as e "
+                + "left join usuarios as u on e.id_empleado = u.id_empleado "
+                + "where u.id_usuario is null";
+        try (Connection conn = DataBaseConnection.getConnection();
+                PreparedStatement pstm = conn.prepareStatement(sql);
+                ResultSet rs = pstm.executeQuery()) {
+            
+            while (rs.next()) {
+                lista.add(new EmpleadoModel(
+                rs.getString("id_empleado"),
+                rs.getString("primer_nombre"),
+                rs.getString("dpi"),
+                rs.getString("telefono"),
+                rs.getString("id_puesto"),
+                rs.getString("departamento")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en la base de datos: " + e.getMessage());
+        }
+        return lista;
+    }
 }

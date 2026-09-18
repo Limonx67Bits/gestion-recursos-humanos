@@ -1,31 +1,22 @@
 package main.java.com.pbcorporations.gestion.recursos.humanos;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.java.com.pbcorporations.gestion.recursos.humanos.util.SceneManager;
 
 public class MainApp extends Application {
 
+    private Stage stage;
+    
     @Override
-    public void start(Stage primaryStage) {
-        try {
-            
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/view/EmpleadoView.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            
-            primaryStage.setTitle("Gestión de Recursos Humanos - Empleados");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void start(Stage stage) throws Exception{
+        this.stage = stage;
+        SceneManager manager = new SceneManager(stage);
+        manager.showLoginView();
+        stage.show();
     }
 
     public static void main(String[] args) {
-        launch(args);
+        launch();
     }
 }
