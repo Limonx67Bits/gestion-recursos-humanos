@@ -1,8 +1,0 @@
-#archivos de compilación
-/build/
-/dist/
-/nbproject/private/
-
-#clases autogeneradas
-*.class
-*.jar
