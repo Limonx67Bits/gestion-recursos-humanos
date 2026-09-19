@@ -109,7 +109,7 @@ public class SceneManager {
         stage.show();
     }
 
-    public void showAlertInfo(Alert.AlertType tipo, String title, String content) {
+    public static void showAlertInfo(Alert.AlertType tipo, String title, String content) {
         Alert alert = new Alert(tipo);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -122,6 +122,16 @@ public class SceneManager {
         );
 
         alert.showAndWait();
+    }
 
+    public void showEmpleadoView() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH_FXML + "EmpleadoView.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 900, 600);
+        stage.setMinWidth(800);
+        stage.setMinHeight(500);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
     }
 }

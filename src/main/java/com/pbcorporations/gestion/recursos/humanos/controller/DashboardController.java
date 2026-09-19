@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import main.java.com.pbcorporations.gestion.recursos.humanos.model.Usuario;
@@ -79,7 +80,11 @@ public class DashboardController implements Initializable {
             
     @FXML
     public void handleShowEmpleados() {
-        // acá ingresen sus vistas de lo que hayan trabajado, siempre creen las vistas con SCENE MANAGER para no meter como 1000 lineas por boton XD
+        try {
+            manager.showEmpleadoView();
+        } catch (Exception e) {
+            SceneManager.showAlertInfo(Alert.AlertType.ERROR, "Error", "No se pudo cargar la vista de empleados: " + e.getMessage());
+        }
     }
     
     @FXML
