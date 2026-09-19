@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import main.java.com.pbcorporations.gestion.recursos.humanos.model.EmpleadoModel;
 import main.java.com.pbcorporations.gestion.recursos.humanos.service.EmpleadoService;
+import main.java.com.pbcorporations.gestion.recursos.humanos.util.SceneManager;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -77,7 +78,7 @@ public class EmpleadoController implements Initializable {
             listaEmpleados.addAll(empleadoService.obtenerEmpleados());
             tablaEmpleados.setItems(listaEmpleados);
         } catch (Exception e) {
-            mostrarAlerta("Error", "No se pudieron cargar los datos: " + e.getMessage(), Alert.AlertType.ERROR);
+            SceneManager.showAlertInfo(Alert.AlertType.ERROR, "Error", "No se pudieron cargar los datos: " + e.getMessage());
         }
     }
 
@@ -88,40 +89,39 @@ public class EmpleadoController implements Initializable {
 
             if (txtId.getText() == null || txtId.getText().trim().isEmpty()) {
                 empleadoService.guardarEmpleado(emp);
-                mostrarAlerta("Éxito", "Empleado guardado correctamente.", Alert.AlertType.INFORMATION);
+                SceneManager.showAlertInfo(Alert.AlertType.INFORMATION, "Éxito", "Empleado guardado correctamente.");
             } else {
                 empleadoService.actualizarEmpleado(emp);
-                mostrarAlerta("Éxito", "Empleado actualizado correctamente.", Alert.AlertType.INFORMATION);
+                SceneManager.showAlertInfo(Alert.AlertType.INFORMATION, "Éxito", "Empleado actualizado correctamente.");
             }
 
             limpiarCampos();
             cargarEmpleados();
         } catch (NumberFormatException e) {
-            mostrarAlerta("Error", "La Zona debe ser un valor numérico.", Alert.AlertType.WARNING);
+            SceneManager.showAlertInfo(Alert.AlertType.WARNING, "Error", "La Zona debe ser un valor numérico.");
         } catch (Exception e) {
-            mostrarAlerta("Error", e.getMessage(), Alert.AlertType.WARNING);
+            SceneManager.showAlertInfo(Alert.AlertType.WARNING, "Error", e.getMessage());
         }
     }
 
-    // NUEVO MÉTODO AÑADIDO: Acción explícita para el botón Actualizar
     @FXML
     public void handleActualizar() {
         if (txtId.getText() == null || txtId.getText().trim().isEmpty()) {
-            mostrarAlerta("Advertencia", "Debe seleccionar un empleado de la tabla para actualizar.", Alert.AlertType.WARNING);
+            SceneManager.showAlertInfo(Alert.AlertType.WARNING, "Advertencia", "Debe seleccionar un empleado de la tabla para actualizar.");
             return;
         }
 
         try {
             EmpleadoModel emp = crearObjetoDesdeCampos();
             empleadoService.actualizarEmpleado(emp);
-            mostrarAlerta("Éxito", "Empleado actualizado correctamente.", Alert.AlertType.INFORMATION);
+            SceneManager.showAlertInfo(Alert.AlertType.INFORMATION, "Éxito", "Empleado actualizado correctamente.");
 
             limpiarCampos();
             cargarEmpleados();
         } catch (NumberFormatException e) {
-            mostrarAlerta("Error", "La Zona debe ser un valor numérico.", Alert.AlertType.WARNING);
+            SceneManager.showAlertInfo(Alert.AlertType.WARNING, "Error", "La Zona debe ser un valor numérico.");
         } catch (Exception e) {
-            mostrarAlerta("Error", e.getMessage(), Alert.AlertType.WARNING);
+            SceneManager.showAlertInfo(Alert.AlertType.WARNING, "Error", e.getMessage());
         }
     }
 
@@ -170,17 +170,17 @@ public class EmpleadoController implements Initializable {
     public void handleEliminar() {
         EmpleadoModel seleccionado = tablaEmpleados.getSelectionModel().getSelectedItem();
         if (seleccionado == null) {
-            mostrarAlerta("Advertencia", "Debe seleccionar un empleado para eliminar.", Alert.AlertType.WARNING);
+            SceneManager.showAlertInfo(Alert.AlertType.WARNING, "Advertencia", "Debe seleccionar un empleado para eliminar.");
             return;
         }
 
         try {
             empleadoService.eliminarEmpleado(seleccionado.getIdEmpleado());
-            mostrarAlerta("Éxito", "Empleado eliminado correctamente.", Alert.AlertType.INFORMATION);
+            SceneManager.showAlertInfo(Alert.AlertType.INFORMATION, "Éxito", "Empleado eliminado correctamente.");
             limpiarCampos();
             cargarEmpleados();
         } catch (Exception e) {
-            mostrarAlerta("Error", e.getMessage(), Alert.AlertType.ERROR);
+            SceneManager.showAlertInfo(Alert.AlertType.ERROR, "Error", e.getMessage());
         }
     }
 
@@ -226,13 +226,5 @@ public class EmpleadoController implements Initializable {
         if (txtDepartamentoDir != null) txtDepartamentoDir.clear();
         if (txtCodigoPostal != null) txtCodigoPostal.clear();
         tablaEmpleados.getSelectionModel().clearSelection();
-    }
-
-    private void mostrarAlerta(String titulo, String contenido, Alert.AlertType tipo) {
-        Alert alert = new Alert(tipo);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null);
-        alert.setContentText(contenido);
-        alert.showAndWait();
     }
 }
