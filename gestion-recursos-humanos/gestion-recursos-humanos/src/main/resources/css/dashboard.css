@@ -1,0 +1,30 @@
+.sidebar {
+    -fx-background-color: #1E3A5F;
+}
+
+.sidebar-title {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12;
+    -fx-cursor: hand;
+}
+
+.menu-button:hover {
+    -fx-background-color: #2A4B73;
+}
+
+.menu-button-active {
+    -fx-background-color: #1565C0;
+    -fx-text-fill: white;
+}
+
+.content-pane {
+    -fx-background-color: #F5F7FA;
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="main.java.com.pbcorporations.gestion.recursos.humanos.controller.HorasExtraController"
+      spacing="15">
+
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
+
+    <Label text="Registro de Horas Extra" styleClass="title-label"/>
+    <Label text="Selecciona una asistencia con salida marcada y asígnale sus horas extra" styleClass="subtitle-label"/>
+
+    <TableView fx:id="tableAsistencias" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="columnEmpleado" text="Empleado" prefWidth="200"/>
+            <TableColumn fx:id="columnFecha" text="Fecha" prefWidth="110"/>
+            <TableColumn fx:id="columnEntrada" text="Entrada" prefWidth="100"/>
+            <TableColumn fx:id="columnSalida" text="Salida" prefWidth="100"/>
+            <TableColumn fx:id="columnHorasExtra" text="Horas extra" prefWidth="110"/>
+        </columns>
+    </TableView>
+
+    <HBox styleClass="form-card" spacing="15" alignment="CENTER_LEFT">
+        <VBox spacing="4">
+            <Label text="Horas extra a registrar" styleClass="form-label"/>
+            <TextField fx:id="fieldHorasExtra" styleClass="form-field" promptText="Ej. 2.5"/>
+        </VBox>
+        <Button text="Guardar" styleClass="btn-update" onAction="#handleGuardarHorasExtra"/>
+    </HBox>
+
+</VBox>
