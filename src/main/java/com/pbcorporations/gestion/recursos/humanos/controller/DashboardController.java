@@ -83,9 +83,9 @@ public class DashboardController implements Initializable {
     }
     
     @FXML
-    public void handleShowSalarios() {
-        // acá ingresen sus vistas de lo que hayan trabajado, siempre creen las vistas con SCENE MANAGER para no meter como 1000 lineas por boton XD
-    }
+    public void handleShowSalarios() throws Exception {
+        manager.showSalarioView();
+       }
             
     @FXML
     public void handleShowAsistencia() {

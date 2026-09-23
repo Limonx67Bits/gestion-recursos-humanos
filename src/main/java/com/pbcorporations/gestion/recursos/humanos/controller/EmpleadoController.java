@@ -71,7 +71,7 @@ public class EmpleadoController implements Initializable {
         colCodigoPostal.setCellValueFactory(new PropertyValueFactory<>("codigoPostal"));
     }
 
-    private void cargarEmpleados() {
+    protected void cargarEmpleados() {
         try {
             listaEmpleados.clear();
             listaEmpleados.addAll(empleadoService.obtenerEmpleados());
@@ -103,7 +103,6 @@ public class EmpleadoController implements Initializable {
         }
     }
 
-    // NUEVO MÉTODO AÑADIDO: Acción explícita para el botón Actualizar
     @FXML
     public void handleActualizar() {
         if (txtId.getText() == null || txtId.getText().trim().isEmpty()) {
@@ -125,7 +124,7 @@ public class EmpleadoController implements Initializable {
         }
     }
 
-    private EmpleadoModel crearObjetoDesdeCampos() {
+    protected EmpleadoModel crearObjetoDesdeCampos() {
         EmpleadoModel emp = new EmpleadoModel();
         emp.setIdEmpleado(txtId.getText());
         emp.setDpi(txtDpi.getText());

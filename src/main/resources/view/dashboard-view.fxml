@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.pbcorporations.gestion.recursos.humanos.controller.DashboardController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.pbcorporations.gestion.recursos.humanos.controller.DashboardController">
     <stylesheets>
         <URL value="@/main/resources/css/styles.css" />
     </stylesheets>
@@ -71,7 +71,7 @@
                   <Button mnemonicParsing="false" onAction="#handleShowDepartamentos" styleClass="menu-button-active" text="Departamentos" />
                   <Button mnemonicParsing="false" onAction="#handleShowAsistencia" styleClass="menu-button-active" text="Asistencia / Horas extra" />
                   <Button mnemonicParsing="false" onAction="#handleShowEmpleados" styleClass="menu-button-active" text="Empleados" />
-                  <Button mnemonicParsing="false" onAction="#handleShowSalarios" styleClass="menu-button-active" text="Salarios / Planilla" />
+                  <Button fx:id="btnSalarios" mnemonicParsing="false" onAction="#handleShowSalarios" styleClass="menu-button-active" text="Salarios / Planilla" />
                </children>
                <opaqueInsets>
                   <Insets />

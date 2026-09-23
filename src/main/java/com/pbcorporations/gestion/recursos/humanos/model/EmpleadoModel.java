@@ -1,5 +1,7 @@
 package main.java.com.pbcorporations.gestion.recursos.humanos.model;
 
+import java.math.BigDecimal;
+
 public class EmpleadoModel {
 
     private String idEmpleado;
@@ -21,7 +23,7 @@ public class EmpleadoModel {
     private String puesto;
     private String departamento;
     private String direccionCompleta;
-    private double salarioBase;
+    private BigDecimal salarioBase;
     private String estado;
 
     public EmpleadoModel() {
@@ -31,7 +33,7 @@ public class EmpleadoModel {
             String primerApellido, String segundoApellido, String telefono, String correo,
             String tipoVialidad, String numeroVialidad, String numeroCasaLote,
             String coloniaBarrio, int zona, String municipio, String departamentoDir,
-            String codigoPostal, String puesto, String departamento, double salarioBase, String estado) {
+            String codigoPostal, String puesto, String departamento, BigDecimal salarioBase, String estado) {
         this.idEmpleado = idEmpleado;
         this.dpi = dpi;
         this.primerNombre = primerNombre;
@@ -207,11 +209,11 @@ public class EmpleadoModel {
         this.direccionCompleta = direccionCompleta;
     }
 
-    public double getSalarioBase() {
+    public BigDecimal getSalarioBase() {
         return salarioBase;
     }
 
-    public void setSalarioBase(double salarioBase) {
+    public void setSalarioBase(BigDecimal salarioBase) {
         this.salarioBase = salarioBase;
     }
 
