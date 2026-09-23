@@ -9,10 +9,20 @@ import javafx.stage.Stage;
 import main.java.com.pbcorporations.gestion.recursos.humanos.controller.DashboardController;
 import main.java.com.pbcorporations.gestion.recursos.humanos.controller.LoginController;
 import main.java.com.pbcorporations.gestion.recursos.humanos.controller.RegisterController;
+import main.java.com.pbcorporations.gestion.recursos.humanos.controller.SalarioController;
 import main.java.com.pbcorporations.gestion.recursos.humanos.repository.EmpleadoRepository;
+import main.java.com.pbcorporations.gestion.recursos.humanos.repository.NominasRepository;
 import main.java.com.pbcorporations.gestion.recursos.humanos.repository.RolRepository;
 import main.java.com.pbcorporations.gestion.recursos.humanos.repository.UsuarioRepository;
 import main.java.com.pbcorporations.gestion.recursos.humanos.service.AuthService;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import main.java.com.pbcorporations.gestion.recursos.humanos.config.Credentials;
+import main.java.com.pbcorporations.gestion.recursos.humanos.service.EmpleadoService;
+import main.java.com.pbcorporations.gestion.recursos.humanos.service.NominasService;
 
 public class SceneManager {
 
@@ -100,6 +110,42 @@ public class SceneManager {
                 }
         );
         
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 600, 500);
+        stage.setMinWidth(550);
+        stage.setMinHeight(450);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
+    }
+    
+     public void showSalarioView() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH_FXML + "salario-view.fxml"));
+
+        loader.setControllerFactory(
+                clazz -> {
+                    if (clazz == SalarioController.class) {
+                        Connection connection;
+                        try {
+                        connection = DriverManager.getConnection(Credentials.URL, Credentials.USER, Credentials.PASSWORD);
+                        NominasRepository nominasRepository = new NominasRepository(connection);
+                        EmpleadoRepository empleado = new EmpleadoRepository();
+                        NominasService nominaService = new NominasService(nominasRepository, empleado);
+                        return new SalarioController(nominaService, this );
+                        } catch (SQLException ex) {
+                            Logger.getLogger(SceneManager.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                       
+                    }
+
+                    try {
+                        return clazz.getDeclaredConstructor().newInstance();
+                    } catch (Exception e) {
+                        throw new RuntimeException("Error al crear el constructor... " + e.getMessage());
+                    }
+                }
+        );
+
         Parent root = loader.load();
         Scene scene = new Scene(root, 600, 500);
         stage.setMinWidth(550);

@@ -42,7 +42,7 @@ public class EmpleadoRepository {
                         rs.getString("codigo_postal"),
                         rs.getString("nombre_puesto"),
                         rs.getString("nombre_departamento"),
-                        rs.getDouble("salario_base"),
+                        rs.getBigDecimal("salario_base"),
                         rs.getString("estado")
                 );
                 lista.add(emp);
@@ -174,7 +174,7 @@ public class EmpleadoRepository {
                         rs.getString("codigo_postal"),
                         rs.getString("nombre_puesto"),
                         rs.getString("nombre_departamento"),
-                        rs.getDouble("salario_base"),
+                        rs.getBigDecimal("salario_base"),
                         rs.getString("estado")
                 );
                 lista.add(emp);

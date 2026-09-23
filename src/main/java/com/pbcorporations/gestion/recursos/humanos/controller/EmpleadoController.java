@@ -72,7 +72,7 @@ public class EmpleadoController implements Initializable {
         colCodigoPostal.setCellValueFactory(new PropertyValueFactory<>("codigoPostal"));
     }
 
-    private void cargarEmpleados() {
+    protected void cargarEmpleados() {
         try {
             listaEmpleados.clear();
             listaEmpleados.addAll(empleadoService.obtenerEmpleados());
@@ -125,7 +125,7 @@ public class EmpleadoController implements Initializable {
         }
     }
 
-    private EmpleadoModel crearObjetoDesdeCampos() {
+    protected EmpleadoModel crearObjetoDesdeCampos() {
         EmpleadoModel emp = new EmpleadoModel();
         emp.setIdEmpleado(txtId.getText());
         emp.setDpi(txtDpi.getText());
