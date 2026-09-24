@@ -1,8 +1,14 @@
-#archivos de compilación
+# --- NetBeans Build & Temp Directories ---
 /build/
 /dist/
 /nbproject/private/
+/nbproject/build-impl.xml
+/nbproject/genfiles.properties
 
-#clases autogeneradas
-*.class
-*.jar
+# --- OS Specific Files ---
+.DS_Store
+Thumbs.db
+
+git rm -r --cached build/
+git rm -r --cached dist/
+git rm -r --cached nbproject/private/
