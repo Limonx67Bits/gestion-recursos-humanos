@@ -43,10 +43,23 @@ public class EmpleadoController implements Initializable {
     @FXML private TableColumn<EmpleadoModel, Integer> colZona;
     @FXML private TableColumn<EmpleadoModel, String> colMunicipio;
     @FXML private TableColumn<EmpleadoModel, String> colCodigoPostal;
+    
+    @FXML private Button btnGuardar;
+    @FXML private Button btnActualizar;
+    @FXML private Button btnEliminar;
+    @FXML private Button btnLimpiar;
+    @FXML private Button btnRegresar;
+    
 
-    private final EmpleadoService empleadoService = new EmpleadoService();
+    private  EmpleadoService empleadoService;
     private ObservableList<EmpleadoModel> listaEmpleados = FXCollections.observableArrayList();
+    private SceneManager sceneManager;
 
+    public EmpleadoController(EmpleadoService empleadoService, SceneManager sceneManager){
+        this.empleadoService = empleadoService;
+        this.sceneManager = sceneManager;
+    }
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         configurarTabla();
@@ -227,4 +240,15 @@ public class EmpleadoController implements Initializable {
         if (txtCodigoPostal != null) txtCodigoPostal.clear();
         tablaEmpleados.getSelectionModel().clearSelection();
     }
+    
+    @FXML
+    public void regresar() throws Exception{
+        try{
+        sceneManager.showDashboardView();
+        }catch(Exception e){
+            SceneManager.showAlertInfo(Alert.AlertType.ERROR, "Error", "No se pudo regresar a la pagina anterior" + e.getMessage());
+        
+        }
+        }
+        
 }
