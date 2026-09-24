@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.pbcorporations.gestion.recursos.humanos.controller.DashboardController">
+    <stylesheets>
+        <URL value="@/main/resources/css/styles.css" />
+    </stylesheets>
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="separator" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <ImageView fitHeight="46.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/user_icon_149851%20(2).png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lblBienvenida" styleClass="title-label" text="Label" />
+                  <Label fx:id="lblUsuario" styleClass="subtitle-label" text="Label" />
+                  <Region maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                  <Label fx:id="lblRol" styleClass="subtitle-label" text="Label" />
+                  <Region maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" onAction="#handleLogout" styleClass="menu-button-active" text="Cerrar Sesión" />
+               </children>
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </HBox>
+         </top>
+         <stylesheets>
+            <URL value="@../css/styles.css" />
+            <URL value="@../css/dashboard.css" />
+         </stylesheets>
+         <left>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+               <children>
+                  <Label styleClass="sidebar-title" text="Gestión" />
+                  <Label styleClass="sidebar-title" text="de" />
+                  <Label styleClass="sidebar-title" text="RRHH" />
+                  <Label styleClass="sidebar-title" text="-" />
+                  <Label styleClass="sidebar-title" text="Planilla" />
+                  <Region maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                  <Label styleClass="sidebar-title" text="Dashboard" />
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </VBox>
+         </left>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" />
+         </padding>
+         <center>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" styleClass="content-pane" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleShowDepartamentos" styleClass="menu-button-active" text="Departamentos" />
+                  <Button mnemonicParsing="false" onAction="#handleShowAsistencia" styleClass="menu-button-active" text="Asistencia / Horas extra" />
+                  <Button mnemonicParsing="false" onAction="#handleShowEmpleados" styleClass="menu-button-active" text="Empleados" />
+                  <Button fx:id="btnSalarios" mnemonicParsing="false" onAction="#handleShowSalarios" styleClass="menu-button-active" text="Salarios / Planilla" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </HBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
