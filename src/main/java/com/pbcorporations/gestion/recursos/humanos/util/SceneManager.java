@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import main.java.com.pbcorporations.gestion.recursos.humanos.config.Credentials;
+import main.java.com.pbcorporations.gestion.recursos.humanos.controller.EmpleadoController;
 import main.java.com.pbcorporations.gestion.recursos.humanos.service.EmpleadoService;
 import main.java.com.pbcorporations.gestion.recursos.humanos.service.NominasService;
 
@@ -81,9 +82,9 @@ public class SceneManager {
         );
 
         Parent root = loader.load();
-        Scene scene = new Scene(root, 600, 500);
-        stage.setMinWidth(550);
-        stage.setMinHeight(450);
+        Scene scene = new Scene(root, 900, 600);
+        stage.setMinWidth(800);
+        stage.setMinHeight(500);
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
@@ -171,7 +172,23 @@ public class SceneManager {
     }
 
     public void showEmpleadoView() throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH_FXML + "EmpleadoView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH_FXML + "empleado-view.fxml"));
+        loader.setControllerFactory(
+                clazz -> {
+                    if (clazz == EmpleadoController.class) {        
+                        EmpleadoRepository empleado = new EmpleadoRepository();
+                        EmpleadoService service = new EmpleadoService(empleado);
+                        return new EmpleadoController(service, this);
+                       
+                    }
+
+                    try {
+                        return clazz.getDeclaredConstructor().newInstance();
+                    } catch (Exception e) {
+                        throw new RuntimeException("Error al crear el constructor... " + e.getMessage());
+                    }
+                }
+        );
         Parent root = loader.load();
         Scene scene = new Scene(root, 900, 600);
         stage.setMinWidth(800);

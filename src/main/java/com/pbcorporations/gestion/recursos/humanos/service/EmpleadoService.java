@@ -7,8 +7,14 @@ import main.java.com.pbcorporations.gestion.recursos.humanos.repository.Empleado
 
 public class EmpleadoService {
 
-    private final EmpleadoRepository repository = new EmpleadoRepository();
+    private EmpleadoRepository repository;
 
+    public EmpleadoService(EmpleadoRepository repository) {
+        this.repository = repository;
+    }
+
+    
+    
     public List<EmpleadoModel> obtenerEmpleados() throws SQLException {
         return repository.listarTodos();
     }
