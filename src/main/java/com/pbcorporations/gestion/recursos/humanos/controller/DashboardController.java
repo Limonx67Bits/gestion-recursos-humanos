@@ -99,6 +99,7 @@ public class DashboardController implements Initializable {
             SceneManager.showAlertInfo(Alert.AlertType.ERROR, "Error", "No se pudo cargar la vista de empleados: " + e.getMessage());
         }
     }   
+  
     @FXML
     public void handleShowAsistencia() {
         try {

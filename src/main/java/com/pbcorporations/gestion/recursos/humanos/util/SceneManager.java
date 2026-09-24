@@ -24,15 +24,12 @@ import main.java.com.pbcorporations.gestion.recursos.humanos.config.Credentials;
 import main.java.com.pbcorporations.gestion.recursos.humanos.controller.EmpleadoController;
 import main.java.com.pbcorporations.gestion.recursos.humanos.service.EmpleadoService;
 import main.java.com.pbcorporations.gestion.recursos.humanos.service.NominasService;
-
-
 import main.java.com.pbcorporations.gestion.recursos.humanos.controller.DepartamentoController;
 import main.java.com.pbcorporations.gestion.recursos.humanos.controller.AsistenciaController;
 import main.java.com.pbcorporations.gestion.recursos.humanos.repository.DepartamentoRepository;
 import main.java.com.pbcorporations.gestion.recursos.humanos.repository.AsistenciaRepository;
 import main.java.com.pbcorporations.gestion.recursos.humanos.service.DepartamentoService;
 import main.java.com.pbcorporations.gestion.recursos.humanos.service.AsistenciaService;
-
 
 public class SceneManager {
 
@@ -206,8 +203,6 @@ public class SceneManager {
         stage.centerOnScreen();
         stage.show();
     }
-
-    
 
     public void showDepartamentosView() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH_FXML + "departamentos-view.fxml"));
