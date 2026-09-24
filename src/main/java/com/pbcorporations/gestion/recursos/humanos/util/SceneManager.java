@@ -24,6 +24,12 @@ import main.java.com.pbcorporations.gestion.recursos.humanos.config.Credentials;
 import main.java.com.pbcorporations.gestion.recursos.humanos.controller.EmpleadoController;
 import main.java.com.pbcorporations.gestion.recursos.humanos.service.EmpleadoService;
 import main.java.com.pbcorporations.gestion.recursos.humanos.service.NominasService;
+import main.java.com.pbcorporations.gestion.recursos.humanos.controller.DepartamentoController;
+import main.java.com.pbcorporations.gestion.recursos.humanos.controller.AsistenciaController;
+import main.java.com.pbcorporations.gestion.recursos.humanos.repository.DepartamentoRepository;
+import main.java.com.pbcorporations.gestion.recursos.humanos.repository.AsistenciaRepository;
+import main.java.com.pbcorporations.gestion.recursos.humanos.service.DepartamentoService;
+import main.java.com.pbcorporations.gestion.recursos.humanos.service.AsistenciaService;
 
 public class SceneManager {
 
@@ -197,4 +203,63 @@ public class SceneManager {
         stage.centerOnScreen();
         stage.show();
     }
+
+    public void showDepartamentosView() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH_FXML + "departamentos-view.fxml"));
+
+        loader.setControllerFactory(
+                clazz -> {
+                    if (clazz == DepartamentoController.class) {
+                        DepartamentoRepository repository = new DepartamentoRepository();
+                        DepartamentoService service = new DepartamentoService(repository);
+                        return new DepartamentoController(service, this);
+                    }
+
+                    try {
+                        return clazz.getDeclaredConstructor().newInstance();
+                    } catch (Exception e) {
+                        throw new RuntimeException("Error al crear el constructor... " + e.getMessage());
+                    }
+                }
+        );
+
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 1000, 650);
+        stage.setMinWidth(800);
+        stage.setMinHeight(500);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void showAsistenciaView() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(PATH_FXML + "asistencia-view.fxml"));
+
+        loader.setControllerFactory(
+                clazz -> {
+                    if (clazz == AsistenciaController.class) {
+                        AsistenciaRepository repository = new AsistenciaRepository();
+                        EmpleadoRepository empleadoRepository = new EmpleadoRepository();
+                        AsistenciaService service = new AsistenciaService(repository, empleadoRepository);
+                        return new AsistenciaController(service, this);
+                    }
+
+                    try {
+                        return clazz.getDeclaredConstructor().newInstance();
+                    } catch (Exception e) {
+                        throw new RuntimeException("Error al crear el constructor... " + e.getMessage());
+                    }
+                }
+        );
+
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 1100, 700);
+        stage.setMinWidth(900);
+        stage.setMinHeight(550);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    
 }

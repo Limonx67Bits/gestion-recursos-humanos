@@ -75,7 +75,11 @@ public class DashboardController implements Initializable {
     
     @FXML
     public void handleShowDepartamentos() {
-        // acá ingresen sus vistas de lo que hayan trabajado, siempre creen las vistas con SCENE MANAGER para no meter como 1000 lineas por boton XD
+        try {
+            manager.showDepartamentosView();
+        } catch (Exception e) {
+            SceneManager.showAlertInfo(Alert.AlertType.ERROR, "Error", "No se pudo cargar la vista de departamentos: " + e.getMessage());
+        }
     }
             
     @FXML
@@ -95,8 +99,13 @@ public class DashboardController implements Initializable {
             SceneManager.showAlertInfo(Alert.AlertType.ERROR, "Error", "No se pudo cargar la vista de empleados: " + e.getMessage());
         }
     }   
+  
     @FXML
     public void handleShowAsistencia() {
-        // acá ingresen sus vistas de lo que hayan trabajado, siempre creen las vistas con SCENE MANAGER para no meter como 1000 lineas por boton XD
+        try {
+            manager.showAsistenciaView();
+        } catch (Exception e) {
+            SceneManager.showAlertInfo(Alert.AlertType.ERROR, "Error", "No se pudo cargar la vista de asistencia: " + e.getMessage());
+        }
     }
 }
